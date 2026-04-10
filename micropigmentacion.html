@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Micropigmentación | Dulce Calavera</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@200;400;700&display=swap"
+      rel="stylesheet" />
+
+    <style>
+      :root {
+        --plum: #4a1a2c;
+        --plum-light: #7d3a4a;
+        --nude-bg: #e5d1d0;
+        --transition-premium: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      /* 1. Reset & Smoothnes */
+      body {
+        background: var(--nude-bg);
+        color: var(--plum);
+        font-family: "Inter", sans-serif;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .font-header {
+        font-family: "Cinzel", serif;
+      }
+
+      /* 2. Animación de "Entrada de Revista" (Reveal Up) */
+      [data-aos="reveal-up"] {
+        clip-path: inset(100% 0 0 0);
+        transform: translateY(30px);
+        transition:
+          clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      [data-aos="reveal-up"].aos-animate {
+        clip-path: inset(0 0 0 0);
+        transform: translateY(0);
+      }
+
+      /* 3. Degradado Animado Sutil */
+      .plum-gradient {
+        background: linear-gradient(90deg, #4a1a2c, #7d3a4a, #4a1a2c);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shine 8s linear infinite;
+      }
+
+      @keyframes shine {
+        to {
+          background-position: 200% center;
+        }
+      }
+
+      /* 4. Botón Premium con Efecto de Llenado Líquido */
+      .premium-btn {
+        position: relative;
+        background: transparent;
+        border: 1px solid var(--plum);
+        color: var(--plum);
+        z-index: 1;
+        overflow: hidden;
+        transition: var(--transition-premium);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .premium-btn::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: var(--plum);
+        z-index: -1;
+        transition: var(--transition-premium);
+      }
+
+      @media (hover: hover) {
+        .premium-btn:hover {
+          color: var(--nude-bg);
+          border-color: var(--plum);
+        }
+        .premium-btn:hover::before {
+          height: 100%;
+        }
+      }
+
+      /* 5. Imágenes con Efecto de "Flote" y Zoom Suave */
+      .img-container {
+        position: relative;
+        border-radius: 1rem;
+        overflow: hidden;
+        background: #fff;
+        border: 1px solid rgba(74, 26, 44, 0.08);
+        transition: var(--transition-premium);
+      }
+
+      .img-container img {
+        transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        filter: brightness(1.02) contrast(1.02);
+      }
+
+      .img-container:hover img {
+        transform: scale(1.08);
+      }
+
+      /* 6. Línea de Dibujo (Decorativa) */
+      .draw-line {
+        height: 1px;
+        background: var(--plum);
+        width: 0;
+        transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        opacity: 0.3;
+      }
+      .aos-animate .draw-line {
+        width: 100%;
+      }
+
+      /* 7. Altura de Pantalla Adaptable */
+      .hero-height {
+        min-height: 100vh;
+        min-height: 100svh;
+      }
+
+      /* 8. WhatsApp Estilizado (Nude & Plum) */
+      .whatsapp-float {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 100;
+        background: var(--plum);
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 15px 30px rgba(74, 26, 44, 0.2);
+        transition: var(--transition-premium);
+      }
+      .whatsapp-float:hover {
+        transform: scale(1.1) translateY(-5px);
+      }
+
+      /* 9. Scrollbar Chic */
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--nude-bg);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--plum);
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <a
+      href="https://wa.me/34600000000?text=%C2%A1Hola!%20Estoy%20interesada%20en%20recibir%20informaci%C3%B3n%20sobre%20vuestros%20servicios%20de%20micropigmentaci%C3%B3n."
+      class="whatsapp-float transition-transform hover:scale-110"
+      target="_blank">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" viewBox="0 0 16 16">
+        <path
+          d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93a7.898 7.898 0 0 0-2.322-5.507z" />
+      </svg>
+    </a>
+
+    <nav
+      class="fixed top-0 w-full z-[100] p-4 md:p-8 flex justify-between items-center bg-gradient-to-b from-[#E5D1D0]/90 to-transparent backdrop-blur-sm lg:backdrop-blur-none">
+      <div class="font-header text-sm md:text-xl font-black tracking-[0.4em] text-[#4A1A2C]">
+        DULCE <span class="opacity-70">CALAVERA</span>
+      </div>
+      <a
+        href="index.html"
+        class="px-5 py-2.5 rounded-full border border-[#4A1A2C]/20 bg-[#4A1A2C]/5 text-[9px] uppercase tracking-[0.2em] text-[#4A1A2C] hover:bg-[#4A1A2C] hover:text-white transition-all">
+        ← Tattoo
+      </a>
+    </nav>
+
+    <header class="relative hero-height flex items-center pt-20 lg:pt-0 overflow-hidden bg-[#E5D1D0]">
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none opacity-[0.04] select-none">
+        <h2 class="text-[20vw] font-header font-black leading-none text-[#4A1A2C]">MICROPIGMENTACION</h2>
+      </div>
+
+      <div class="container mx-auto px-6 lg:px-20 relative z-10">
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div class="order-2 lg:order-1 text-center lg:text-left space-y-6 md:space-y-10" data-aos="fade-up">
+            <div class="space-y-4">
+              <span
+                class="text-[#4A1A2C] font-header text-[10px] md:text-xs tracking-[1em] uppercase block opacity-80"
+                >Cullera • Beauty Studio</span
+              >
+              <h1
+                data-aos="reveal-up"
+                class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-header font-bold leading-[0.95] uppercase text-[#4A1A2C]">
+                <span class="tracking-tight">MICRO</span><br />
+                <span class="plum-gradient italic font-light tracking-tighter sm:tracking-normal block"
+                  >PIGMENTACIÓN</span
+                >
+              </h1>
+            </div>
+
+            <p
+              data-aos="fade-up"
+              data-aos-delay="300"
+              class="text-[#4A1A2C]/80 font-light text-sm md:text-lg max-w-sm mx-auto lg:mx-0 leading-relaxed lg:border-l-2 lg:border-[#4A1A2C]/30 lg:pl-8">
+              La perfección no se nota, se siente. Técnicas avanzadas de realce facial y densificación capilar
+              con acabados de alta costura.
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4">
+              <a
+                href="https://wa.me/34600000000?text=%C2%A1Hola!%20Estoy%20interesada%20en%20recibir%20informaci%C3%B3n%20sobre%20vuestros%20servicios%20de%20micropigmentaci%C3%B3n."
+                class="premium-btn px-10 py-5 rounded-full text-[10px] font-bold uppercase tracking-[0.3em] w-full sm:w-auto"
+                >Reservar Cita</a
+              >
+            </div>
+          </div>
+
+          <div class="relative order-1 lg:order-2 mt-4 lg:mt-0" data-aos="zoom-in">
+            <div
+              class="relative z-10 rounded-2xl overflow-hidden shadow-2xl border border-white/5 max-w-[85%] mx-auto lg:max-w-full">
+              <img
+                src="img/fto7.jpeg"
+                class="w-full h-[45vh] lg:h-auto object-cover lg:object-contain"
+                alt="Arte" />
+            </div>
+
+            <div
+              class="absolute -top-4 -right-4 w-20 h-20 border-t border-r border-[#4A1A2C]/50 lg:hidden"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="py-24 px-6 bg-[#E5D1D0] overflow-hidden">
+      <div class="max-w-6xl mx-auto space-y-40 md:space-y-64">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+          <div class="img-container aspect-[4/5] lg:aspect-auto shadow-2xl" data-aos="reveal-up">
+            <img src="img/fto5.jpeg" class="w-full h-full object-cover" alt="Capilar" />
+          </div>
+
+          <div class="space-y-6 md:space-y-8 lg:pl-10">
+            <span class="text-[#4A1A2C] font-header text-4xl italic opacity-60 block" data-aos="reveal-up"
+              >01</span
+            >
+
+            <h2
+              class="text-3xl md:text-5xl font-header uppercase tracking-tighter leading-none text-[#4A1A2C]"
+              data-aos="reveal-up"
+              data-aos-delay="200">
+              Densificación <br /><span class="opacity-50">Capilar</span>
+            </h2>
+
+            <p
+              class="text-[#4A1A2C]/70 font-light text-base md:text-lg leading-relaxed lg:border-l lg:border-[#4A1A2C]/20 lg:pl-8"
+              data-aos="reveal-up"
+              data-aos-delay="400">
+              Solución definitiva para la falta de densidad. Recreamos cada folículo con precisión artística
+              para un resultado imperceptible y natural.
+            </p>
+
+            <div class="py-4" data-aos="fade-in" data-aos-delay="600">
+              <div class="draw-line w-24"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+          <div class="space-y-6 md:space-y-8 order-2 lg:order-1 lg:text-right lg:pr-10">
+            <span class="text-[#4A1A2C] font-header text-4xl italic opacity-60 block" data-aos="reveal-up"
+              >02</span
+            >
+
+            <h2
+              class="text-3xl md:text-5xl font-header uppercase tracking-tighter leading-none text-[#4A1A2C]"
+              data-aos="reveal-up"
+              data-aos-delay="200">
+              Labios <br /><span class="opacity-50">Aquarelle</span>
+            </h2>
+
+            <p
+              class="text-[#4A1A2C]/70 font-light text-base md:text-lg leading-relaxed lg:border-r lg:border-[#4A1A2C]/20 lg:pr-8"
+              data-aos="reveal-up"
+              data-aos-delay="400">
+              Color, definición y volumen sin perder la naturalidad. El equilibrio perfecto para resaltar tu
+              belleza diaria sin maquillaje.
+            </p>
+
+            <div class="py-4" data-aos="fade-in" data-aos-delay="600">
+              <div class="draw-line w-24 lg:ml-auto"></div>
+            </div>
+          </div>
+
+          <div
+            class="img-container aspect-[4/5] lg:aspect-auto order-1 lg:order-2 shadow-2xl"
+            data-aos="reveal-up">
+            <img src="img/fto3.jpeg" class="w-full h-full object-cover" alt="Labios" />
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <section id="contacto" class="py-24 px-6 bg-[#DBC8C7]">
+      <div class="max-w-xl mx-auto text-center space-y-12">
+        <div data-aos="fade-up">
+          <h2 class="text-4xl md:text-6xl font-header mb-4 plum-gradient leading-none uppercase">
+            Da el paso
+          </h2>
+          <p class="text-[#4A1A2C]/60 uppercase tracking-[0.4em] text-[10px]">Atención de élite en Cullera</p>
+        </div>
+
+        <div class="grid gap-4" data-aos="fade-up">
+          <a
+            href="https://wa.me/34600000000?text=%C2%A1Hola!%20Estoy%20interesada%20en%20recibir%20informaci%C3%B3n%20sobre%20vuestros%20servicios%20de%20micropigmentaci%C3%B3n."
+            class="w-full bg-[#4A1A2C] text-white py-6 rounded-2xl font-black uppercase text-[11px] tracking-[0.2em] transition-transform active:scale-95 shadow-lg hover:bg-[#2D0F1A]">
+            Contactar por WhatsApp
+          </a>
+          <a
+            href="https://instagram.com/TU_CUENTA"
+            target="_blank"
+            class="w-full border border-[#4A1A2C]/20 bg-white/10 py-6 rounded-2xl text-[#4A1A2C] text-[11px] uppercase tracking-[0.2em] hover:bg-white hover:border-white transition-all">
+            Seguir Galería en Instagram
+          </a>
+        </div>
+
+        <div class="pt-20 opacity-40">
+          <a
+            href="index.html"
+            class="text-[10px] uppercase tracking-[0.5em] text-[#4A1A2C] hover:text-[#7D3A4A] transition-colors"
+            >← Volver a Tatuajes</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 lg:py-32 px-6 border-t border-[#4A1A2C]/10 bg-[#E5D1D0] overflow-hidden">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div class="space-y-8 text-center lg:text-left order-2 lg:order-1" data-aos="fade-right">
+            <div class="space-y-4">
+              <span class="text-[#4A1A2C] font-header text-[10px] tracking-[0.8em] uppercase block opacity-70"
+                >Estudio Local</span
+              >
+              <h2 class="text-4xl md:text-6xl font-header uppercase leading-[0.9] text-[#4A1A2C]">
+                Cullera, <br /><span class="opacity-40">Valencia</span>
+              </h2>
+            </div>
+            <div class="space-y-3 py-8 border-y border-[#4A1A2C]/10">
+              <p class="text-[#4A1A2C]/80 tracking-[0.2em] text-sm md:text-base uppercase font-light">
+                Carrer Metge Juan Bolufer Borràs, 6, 46400 Cullera
+              </p>
+              <p class="text-[#4A1A2C] text-[10px] uppercase tracking-[0.4em] font-bold">
+                Cita previa indispensable
+              </p>
+            </div>
+            <div class="pt-4 flex justify-center lg:justify-start">
+              <a
+                href="#"
+                target="_blank"
+                class="inline-flex items-center gap-6 px-12 py-5 rounded-full border border-[#4A1A2C] text-[#4A1A2C] text-[10px] uppercase tracking-[0.4em] hover:bg-[#4A1A2C] hover:text-white transition-all duration-700 w-full sm:w-auto justify-center">
+                <span>Cómo llegar</span> <span>→</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="relative order-1 lg:order-2" data-aos="fade-left">
+            <div
+              class="relative h-[350px] md:h-[500px] w-full rounded-3xl overflow-hidden border border-[#4A1A2C]/10 shadow-xl">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38353.22700581908!2d-0.2780970601376472!3d39.16527348554642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd61c88f797f3ed3%3A0xd858f0cf6882ad60!2sDulce%20Calavera%20tattoo!5e0!3m2!1ses!2ses!4v1774450824976!5m2!1ses!2ses"
+                class="absolute inset-0 w-full h-full grayscale invert-[0.9] contrast-[1.2] opacity-60 hover:opacity-100 transition-opacity duration-1000"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="py-6" data-aos="fade-in">
+      <div class="draw-line"></div>
+    </div>
+    <footer class="py-10 text-center text-[#4A1A2C]/30 text-[8px] uppercase tracking-[0.8em] bg-[#E5D1D0]">
+      Dulce Calavera • Cullera • MMXXVI
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 1200, once: false, disable: "mobile" });
+    </script>
+  </body>
+</html>
